@@ -1,5 +1,12 @@
 import { Card, Heading, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
+
+MyCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
 
 export default function MyCard({ title, description, children }) {
   return (

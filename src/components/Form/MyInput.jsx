@@ -7,6 +7,12 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 
+import PropTypes from "prop-types";
+MyInput.propTypes = {
+  fieldName: PropTypes.string,
+  children: PropTypes.elementType.isRequired,
+};
+
 export default function MyInput({ fieldName='', children }) {
   return (
     <FormControl id={fieldName.toLowerCase()}>
