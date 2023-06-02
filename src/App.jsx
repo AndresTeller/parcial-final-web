@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import HeroImage from './components/HeroImage';
 import Cards from './components/Cards';
 import Footer from './components/Footer';
+import Form from './components/Form';
 
 
 
@@ -13,6 +14,7 @@ function App() {
       <Navbar></Navbar>
       <HeroImage></HeroImage>
       <Cards></Cards>
+      <Form></Form>
       <Footer></Footer>
     </ChakraProvider>
   );
