@@ -5,6 +5,7 @@ import HeroImage from "./components/Shared/HeroImage";
 import Cards from "./components/Card/Cards";
 import Footer from "./components/Shared/Footer";
 import Form from "./components/Form/Form";
+import MyTable from "./components/MyTable";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar></Navbar>
       <HeroImage></HeroImage>
       <Cards></Cards>
+      <MyTable></MyTable>
       <Form></Form>
       <Footer></Footer>
     </ChakraProvider>
