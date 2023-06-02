@@ -1,12 +1,10 @@
-import './App.css'
+import "./App.css";
 import { ChakraProvider } from "@chakra-ui/react";
-import Navbar from './components/Navbar';
-import HeroImage from './components/HeroImage';
-import Cards from './components/Cards';
-import Footer from './components/Footer';
-import Form from './components/Form';
-
-
+import Navbar from "./components/Shared/Navbar";
+import HeroImage from "./components/Shared/HeroImage";
+import Cards from "./components/Card/Cards";
+import Footer from "./components/Shared/Footer";
+import Form from "./components/Form/Form";
 
 function App() {
   return (
@@ -20,7 +18,7 @@ function App() {
   );
 }
 
-export default App
+export default App;
 
 /*
   Colores:

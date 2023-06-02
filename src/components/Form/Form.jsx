@@ -1,6 +1,6 @@
 import { Box, Button, Container, Heading } from "@chakra-ui/react";
 import MyInput from "./MyInput";
-import MySelectInput  from "./MySelectInput";
+import MySelectInput from "./MySelectInput";
 import {
   FaUser,
   FaAddressCard,
@@ -10,7 +10,7 @@ import {
 
 const SimpleSignIn = () => {
   return (
-    <Container textAlign='center' p='2rem'>
+    <Container textAlign="center" p="2rem">
       <Heading>Contáctanos</Heading>
       <Box
         maxW="40rem"
@@ -29,19 +29,18 @@ const SimpleSignIn = () => {
           placeHolder="Seleccionar sexo"
         />
         <MyInput fieldName="Edad">{FaCalendarAlt}</MyInput>
-        <MyInput fieldName="Cedula">{FaAddressCard}</MyInput>
         <MySelectInput
           options={["Colombia", "México", "Argentina"]}
           fieldName="Pais"
           placeHolder="Seleccionar país"
         />
-        <MyInput fieldName="Correo">{FaEnvelope}</MyInput>
-
+        <MyInput fieldName="Cedula">{FaAddressCard}</MyInput>
         <MySelectInput
           options={["Caso1", "Caso2", "Caso3"]}
           fieldName="Caso"
           placeHolder="Seleccionar caso"
         />
+        <MyInput fieldName="Correo">{FaEnvelope}</MyInput>
         <Box mt="1rem" display="flex" gap="1rem" alignItems="center">
           <Button colorScheme="teal">Cancelar</Button>
           <Button colorScheme="teal">Enviar</Button>

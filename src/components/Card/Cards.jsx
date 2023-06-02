@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import MyCard from "./MyCard";
-import { cards } from "../data/cards";
+import { cards } from "../../data/cards";
 
 export default function Cards() {
   return (

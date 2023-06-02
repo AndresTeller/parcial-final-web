@@ -1,5 +1,5 @@
-import { Box, Image, chakra } from '@chakra-ui/react'
-import { heroImages } from '../assets/heroImages'
+import { Box, Image, chakra } from "@chakra-ui/react";
+import { heroImages } from "../../assets/heroImages";
 
 export default function HeroImage() {
   return (
@@ -9,16 +9,16 @@ export default function HeroImage() {
       justifyContent="center"
       bg="gray.200"
       py="2rem"
-      flexWrap='wrap'
-      gap='1rem'
+      flexWrap="wrap"
+      gap="1rem"
     >
-      <Box  h="10rem" maxW="30rem" ml="1rem">
+      <Box h="10rem" maxW="30rem" ml="1rem">
         <chakra.h1
           fontSize="5xl"
           lineHeight={1}
           fontWeight="bold"
           textAlign="left"
-          color="#A37D57"
+          // color="#A37D57"
         >
           El mejor bufete
           <br />
