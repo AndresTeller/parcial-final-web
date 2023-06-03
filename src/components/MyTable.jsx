@@ -1,5 +1,4 @@
 import { Box, Container, Heading, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
-import React from 'react'
 
 export default function MyTable() {
   return (
