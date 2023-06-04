@@ -1,6 +1,45 @@
-import { Box, Container, Heading, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  Spinner,
+  Stack,
+  Table,
+  TableCaption,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { capitalizeFirstLetter } from "./utils/capitalizeFirstLetter";
+import { FaPencilAlt, FaTrash } from "react-icons/fa";
 
 export default function MyTable() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [clientes, setClientes] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/clientes")
+      .then((response) => response.json())
+      .then((json) => {
+        setClientes(json);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
+        
+      });
+  }, []);
+
+  if (isLoading) return (
+    <Box display='flex' justifyContent='center' color='teal'>
+      <Spinner size='xl'></Spinner>
+    </Box>
+  );
+
   return (
     <Box p="4rem">
       <Container maxW="90rem" textAlign="center">
@@ -14,69 +53,35 @@ export default function MyTable() {
                 <Th>Nacionalidad</Th>
                 <Th>Sexo</Th>
                 <Th isNumeric>Edad</Th>
+                <Th textAlign="center">Acciones</Th>
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
-                <Td>Caso 1</Td>
-                <Td>Colombia</Td>
-                <Td>Masculino</Td>
-                <Td isNumeric>25</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 2</Td>
-                <Td>Mexico</Td>
-                <Td>Femenino</Td>
-                <Td isNumeric>27</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 3</Td>
-                <Td>Argentina</Td>
-                <Td>Otro</Td>
-                <Td isNumeric>32</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 3</Td>
-                <Td>Argentina</Td>
-                <Td>Otro</Td>
-                <Td isNumeric>32</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 3</Td>
-                <Td>Argentina</Td>
-                <Td>Otro</Td>
-                <Td isNumeric>32</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 3</Td>
-                <Td>Argentina</Td>
-                <Td>Otro</Td>
-                <Td isNumeric>32</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 3</Td>
-                <Td>Argentina</Td>
-                <Td>Otro</Td>
-                <Td isNumeric>32</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 3</Td>
-                <Td>Argentina</Td>
-                <Td>Otro</Td>
-                <Td isNumeric>32</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 3</Td>
-                <Td>Argentina</Td>
-                <Td>Otro</Td>
-                <Td isNumeric>32</Td>
-              </Tr>
-              <Tr>
-                <Td>Caso 3</Td>
-                <Td>Argentina</Td>
-                <Td>Otro</Td>
-                <Td isNumeric>32</Td>
-              </Tr>
+              {clientes?.map((cliente) => {
+                return (
+                  <Tr key={cliente.id}>
+                    <Td>{capitalizeFirstLetter(cliente.caso)}</Td>
+                    <Td>{capitalizeFirstLetter(cliente.nacionalidad)}</Td>
+                    <Td>{capitalizeFirstLetter(cliente.sexo)}</Td>
+                    <Td isNumeric>{cliente.edad}</Td>
+                    <Td>
+                      <Stack
+                        direction="row"
+                        spacing="2"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        <Button colorScheme="red" size="sm">
+                          {<FaTrash />}
+                        </Button>
+                        <Button colorScheme="blue" size="sm">
+                          {<FaPencilAlt />}
+                        </Button>
+                      </Stack>
+                    </Td>
+                  </Tr>
+                );
+              })}
             </Tbody>
           </Table>
         </TableContainer>

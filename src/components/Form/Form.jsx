@@ -20,7 +20,20 @@ const SimpleSignIn = () => {
   };
 
   const handleSubmit = () => {
-    console.log(formValues);
+    fetch("http://localhost:5000/api/v1/clientes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formValues),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // Hacer algo con la respuesta del servidor
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -57,9 +70,9 @@ const SimpleSignIn = () => {
           </MyInput>
           <MySelectInput
             options={["Colombia", "México", "Argentina"]}
-            fieldName="Pais"
+            fieldName="Nacionalidad"
             placeHolder="Seleccionar país"
-            onChange={(value) => handleInputChange("pais", value)}
+            onChange={(value) => handleInputChange("nacionalidad", value)}
           />
           <MyInput
             fieldName="Cedula"
