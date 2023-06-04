@@ -3,7 +3,7 @@ import {
   Button,
   Container,
   Heading,
-  Spinner,
+  Skeleton,
   Stack,
   Table,
   TableCaption,
@@ -13,14 +13,17 @@ import {
   Th,
   Thead,
   Tr,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { capitalizeFirstLetter } from "./utils/capitalizeFirstLetter";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
+import ModalForm from "./Form/ModalForm";
 
 export default function MyTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [clientes, setClientes] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const deleteUser = async (cedula) => {
     const options = {
@@ -30,28 +33,38 @@ export default function MyTable() {
       },
     };
 
-    const response = await fetch(`http://localhost:5000/api/v1/clientes/${cedula}`, options);
+    const response = await fetch(
+      `http://localhost:5000/api/v1/clientes/${cedula}`,
+      options
+    );
 
     console.log(response);
-  }
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/clientes")
       .then((response) => response.json())
       .then((json) => {
         setClientes(json);
+
         setTimeout(() => {
           setIsLoading(false);
         }, 3000);
-        
       });
   }, []);
 
-  if (isLoading) return (
-    <Box display='flex' justifyContent='center' color='teal'>
-      <Spinner size='xl'></Spinner>
-    </Box>
-  );
+  if (isLoading)
+    return (
+      <Container maxW="90rem" p="4rem">
+        <Stack>
+          <Skeleton h="5rem" />
+          <Skeleton h="2rem" />
+          <Skeleton h="2rem" />
+          <Skeleton h="2rem" />
+          <Skeleton h="2rem" />
+        </Stack>
+      </Container>
+    );
 
   return (
     <Box p="4rem">
@@ -62,6 +75,7 @@ export default function MyTable() {
             <TableCaption>Nuestros casos</TableCaption>
             <Thead>
               <Tr>
+                <Th>Nombre</Th>
                 <Th>Tipo de caso</Th>
                 <Th>Nacionalidad</Th>
                 <Th>Sexo</Th>
@@ -73,6 +87,7 @@ export default function MyTable() {
               {clientes?.map((cliente) => {
                 return (
                   <Tr key={cliente.id}>
+                    <Td>{capitalizeFirstLetter(cliente.nombre)}</Td>
                     <Td>{capitalizeFirstLetter(cliente.caso)}</Td>
                     <Td>{capitalizeFirstLetter(cliente.nacionalidad)}</Td>
                     <Td>{capitalizeFirstLetter(cliente.sexo)}</Td>
@@ -84,13 +99,22 @@ export default function MyTable() {
                         alignItems="center"
                         justifyContent="center"
                       >
-                        <Button colorScheme="red" size="sm" onClick={() => deleteUser(cliente.cedula)}>
+                        <Button
+                          colorScheme="red"
+                          size="sm"
+                          onClick={() => deleteUser(cliente.cedula)}
+                        >
                           {<FaTrash />}
                         </Button>
-                        <Button colorScheme="blue" size="sm">
+                        <Button colorScheme="blue" size="sm" onClick={onOpen}>
                           {<FaPencilAlt />}
                         </Button>
                       </Stack>
+                      <ModalForm
+                        isOpen={isOpen}
+                        onClose={onClose}
+                        cedula={cliente.cedula}
+                      />
                     </Td>
                   </Tr>
                 );

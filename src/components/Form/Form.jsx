@@ -9,7 +9,7 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 
-const SimpleSignIn = () => {
+const SimpleSignIn = ({ cedula = '' }) => {
   const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (fieldName, value) => {
@@ -19,7 +19,22 @@ const SimpleSignIn = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const updateCliente = async (cedula) => {
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formValues),
+    };
+    const response = await fetch(
+      `http://localhost:5000/api/v1/clientes/${cedula}`,
+      options
+    );
+    console.log(response);
+  };
+
+  const createCliente = () => {
     fetch("http://localhost:5000/api/v1/clientes", {
       method: "POST",
       headers: {
@@ -74,12 +89,14 @@ const SimpleSignIn = () => {
             placeHolder="Seleccionar país"
             onChange={(value) => handleInputChange("nacionalidad", value)}
           />
-          <MyInput
-            fieldName="Cedula"
-            onChange={(value) => handleInputChange("cedula", value)}
-          >
-            {FaAddressCard}
-          </MyInput>
+          {cedula === "" && (
+            <MyInput
+              fieldName="Cedula"
+              onChange={(value) => handleInputChange("cedula", value)}
+            >
+              {FaAddressCard}
+            </MyInput>
+          )}
           <MySelectInput
             options={["Caso1", "Caso2", "Caso3"]}
             fieldName="Caso"
@@ -94,7 +111,12 @@ const SimpleSignIn = () => {
           </MyInput>
           <Box mt="1rem" display="flex" gap="1rem" alignItems="center">
             <Button colorScheme="teal">Cancelar</Button>
-            <Button colorScheme="teal" onClick={handleSubmit}>
+            <Button
+              colorScheme="teal"
+              onClick={() => {
+                return cedula === "" ? createCliente() : updateCliente(cedula);
+              }}
+            >
               Enviar
             </Button>
           </Box>
