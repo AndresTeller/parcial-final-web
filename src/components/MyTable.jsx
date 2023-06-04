@@ -22,6 +22,19 @@ export default function MyTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [clientes, setClientes] = useState(null);
 
+  const deleteUser = async (cedula) => {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const response = await fetch(`http://localhost:5000/api/v1/clientes/${cedula}`, options);
+
+    console.log(response);
+  }
+
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/clientes")
       .then((response) => response.json())
@@ -71,7 +84,7 @@ export default function MyTable() {
                         alignItems="center"
                         justifyContent="center"
                       >
-                        <Button colorScheme="red" size="sm">
+                        <Button colorScheme="red" size="sm" onClick={() => deleteUser(cliente.cedula)}>
                           {<FaTrash />}
                         </Button>
                         <Button colorScheme="blue" size="sm">
