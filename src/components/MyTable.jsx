@@ -32,7 +32,7 @@ export default function MyTable() {
           setIsLoading(false);
         }, 3000);
       });
-  }, []);
+  });
 
   if (isLoading)
     return (
