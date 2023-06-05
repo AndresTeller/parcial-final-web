@@ -17,6 +17,7 @@ export default function Footer() {
       py="2rem"
       gap="1rem"
       textAlign="center"
+      as="footer"
     >
       <Text cursor="pointer" fontWeight="bold" fontSize="xl" color="gray.50">
         LOGO

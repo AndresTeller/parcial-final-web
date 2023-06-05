@@ -4,6 +4,7 @@ import { heroImages } from "../../assets/heroImages";
 export default function HeroImage() {
   return (
     <Box
+      as='section'
       display="flex"
       alignItems="center"
       justifyContent="center"

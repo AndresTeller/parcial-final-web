@@ -4,8 +4,15 @@ import { avatars } from "../data/avatars";
 
 export default function Team() {
   return (
-    <Flex bg="gray.200" direction='column' py='2rem' alignItems='center'>
-      <Heading textAlign='center'>Equipo</Heading>
+    <Flex
+      bg="gray.200"
+      direction="column"
+      py="2rem"
+      alignItems="center"
+      as="section"
+      id="team"
+    >
+      <Heading textAlign="center">Equipo</Heading>
       <Stack
         py="2rem"
         direction="row"

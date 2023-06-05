@@ -1,4 +1,4 @@
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Link, Text } from "@chakra-ui/react";
 
 export default function Navbar() {
   return (
@@ -10,26 +10,39 @@ export default function Navbar() {
       py="1rem"
       bg="white"
       zIndex="1"
+      as="nav"
     >
       <Text cursor="pointer" fontSize="xl" fontWeight="bold" mt="2px" ml="30px">
-        Logo
+        <Link _hover={{ textDecoration: "none" }} href="#">
+          Logo
+        </Link>
       </Text>
 
       <Box>
         <Button variant="ghost" colorScheme="teal" fontWeight="bold">
-          Inicio
+          <Link _hover={{ textDecoration: "none" }} href="#">
+            Inicio
+          </Link>
         </Button>
         <Button variant="ghost" colorScheme="teal" fontWeight="bold">
-          Nuestro estudio
+          <Link _hover={{ textDecoration: "none" }} href="#table">
+            Nuestros casos
+          </Link>
         </Button>
         <Button variant="ghost" colorScheme="teal" fontWeight="bold">
-          Equipo
+          <Link _hover={{ textDecoration: "none" }} href="#team">
+            Equipo
+          </Link>
         </Button>
         <Button variant="ghost" colorScheme="teal" fontWeight="bold">
-          Noticias
+          <Link _hover={{ textDecoration: "none" }} href="#news">
+            Noticias
+          </Link>
         </Button>
         <Button variant="ghost" colorScheme="teal" fontWeight="bold">
-          Contacto
+          <Link _hover={{ textDecoration: "none" }} href="#contacto">
+            Contacto
+          </Link>
         </Button>
       </Box>
     </Box>

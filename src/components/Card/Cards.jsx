@@ -5,6 +5,7 @@ import { cards } from "../../data/cards";
 export default function Cards() {
   return (
     <Box
+      as="section"
       display="flex"
       justifyContent="space-evenly"
       bg="#2B3B4E"

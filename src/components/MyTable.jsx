@@ -36,7 +36,7 @@ export default function MyTable() {
 
   if (isLoading)
     return (
-      <Container maxW="90rem" p="4rem">
+      <Container maxW="90rem" p="4rem" as="section" id="table">
         <Stack>
           <Skeleton h="5rem" />
           <Skeleton h="2rem" />
@@ -48,12 +48,12 @@ export default function MyTable() {
     );
 
   return (
-    <Box p="4rem">
+    <Box p="4rem" as="section" id="table">
       <Container maxW="90rem" textAlign="center">
-        <Heading size="md">Nuestros casos</Heading>
+        <Heading mb='1rem'>Nuestros casos</Heading>
         <TableContainer>
           <Table variant="striped" colorScheme="teal">
-            <TableCaption>Nuestros casos</TableCaption>
+            
             <Thead>
               <Tr>
                 <Th>Nombre</Th>
@@ -81,7 +81,7 @@ export default function MyTable() {
                         justifyContent="center"
                       >
                         <DeleteModal cedula={cliente.cedula}></DeleteModal>
-                        <ModalForm cedula={cliente.cedula}/>
+                        <ModalForm cedula={cliente.cedula} />
                       </Stack>
                     </Td>
                   </Tr>

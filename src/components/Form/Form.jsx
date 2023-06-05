@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import ModalSuccess from "../Shared/ModalSuccess";
 
-const SimpleSignIn = ({ cedula = "" }) => {
+const Form = ({ cedula = "" }) => {
   const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (fieldName, value) => {
@@ -53,7 +53,7 @@ const SimpleSignIn = ({ cedula = "" }) => {
   };
 
   return (
-    <Box>
+    <Box as="section" id="contacto">
       <Container textAlign="center" p="2rem">
         <Heading>Contáctanos</Heading>
         <Box
@@ -141,4 +141,4 @@ const SimpleSignIn = ({ cedula = "" }) => {
   );
 };
 
-export default SimpleSignIn;
+export default Form;
