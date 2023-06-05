@@ -8,7 +8,8 @@ export default function HeroImage() {
       alignItems="center"
       justifyContent="center"
       bg="gray.200"
-      py="2rem"
+      pt="8rem"
+      pb='4rem'
       flexWrap="wrap"
       gap="1rem"
     >

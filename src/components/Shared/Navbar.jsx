@@ -2,8 +2,16 @@ import { Box, Button, Text } from "@chakra-ui/react";
 
 export default function Navbar() {
   return (
-    <Box display="flex" justifyContent="space-between" py='1rem'>
-      <Text cursor='pointer' fontSize="xl" fontWeight="bold" mt="2px" ml="30px">
+    <Box
+      position="fixed"
+      w="100%"
+      display="flex"
+      justifyContent="space-between"
+      py="1rem"
+      bg="white"
+      zIndex="1"
+    >
+      <Text cursor="pointer" fontSize="xl" fontWeight="bold" mt="2px" ml="30px">
         Logo
       </Text>
 
