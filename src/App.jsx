@@ -6,14 +6,16 @@ import Cards from "./components/Card/Cards";
 import Footer from "./components/Shared/Footer";
 import Form from "./components/Form/Form";
 import MyTable from "./components/MyTable";
+import Team from "./components/Team";
 
 function App() {
   return (
     <ChakraProvider>
       <Navbar></Navbar>
       <HeroImage></HeroImage>
-      <Cards></Cards>
       <MyTable></MyTable>
+      <Cards></Cards>
+      <Team></Team>
       <Form></Form>
       <Footer></Footer>
     </ChakraProvider>

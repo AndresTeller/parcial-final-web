@@ -21,7 +21,6 @@ function ModalForm({ cedula }) {
       <Modal isOpen={isOpen} onClose={onClose} size="2xl">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Form cedula={cedula}></Form>

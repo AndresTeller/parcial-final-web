@@ -53,7 +53,7 @@ const SimpleSignIn = ({ cedula = "" }) => {
   };
 
   return (
-    <Box bg="gray.100">
+    <Box>
       <Container textAlign="center" p="2rem">
         <Heading>Contáctanos</Heading>
         <Box
