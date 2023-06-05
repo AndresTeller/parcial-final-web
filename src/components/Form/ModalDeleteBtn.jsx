@@ -12,7 +12,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { FaRegTrashAlt, FaTrash } from "react-icons/fa";
-import ModalSuccess from "../ModalSuccess";
+import ModalSuccess from "../Shared/ModalSuccess";
 
 export default function DeleteModal({ cedula }) {
   const { isOpen, onOpen, onClose } = useDisclosure();

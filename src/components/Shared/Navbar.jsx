@@ -15,9 +15,6 @@ export default function Navbar() {
           Nuestro estudio
         </Button>
         <Button variant="ghost" colorScheme="teal" fontWeight="bold">
-          Areas de practica
-        </Button>
-        <Button variant="ghost" colorScheme="teal" fontWeight="bold">
           Equipo
         </Button>
         <Button variant="ghost" colorScheme="teal" fontWeight="bold">

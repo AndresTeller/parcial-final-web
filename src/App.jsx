@@ -7,6 +7,7 @@ import Footer from "./components/Shared/Footer";
 import Form from "./components/Form/Form";
 import MyTable from "./components/MyTable";
 import Team from "./components/Team";
+import AllNews from "./components/News/AllNews";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <MyTable></MyTable>
       <Cards></Cards>
       <Team></Team>
+      <AllNews></AllNews>
       <Form></Form>
       <Footer></Footer>
     </ChakraProvider>

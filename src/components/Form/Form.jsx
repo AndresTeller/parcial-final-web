@@ -8,7 +8,7 @@ import {
   FaEnvelope,
   FaCalendarAlt,
 } from "react-icons/fa";
-import ModalSuccess from "../ModalSuccess";
+import ModalSuccess from "../Shared/ModalSuccess";
 
 const SimpleSignIn = ({ cedula = "" }) => {
   const [formValues, setFormValues] = useState({});
@@ -64,7 +64,7 @@ const SimpleSignIn = ({ cedula = "" }) => {
           flexDir="column"
           alignItems="center"
           borderRadius="1rem"
-          shadow="dark-lg"
+          shadow="2xl"
         >
           <MyInput
             fieldName="Nombre"
