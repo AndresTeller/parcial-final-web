@@ -8,8 +8,9 @@ import {
   FaEnvelope,
   FaCalendarAlt,
 } from "react-icons/fa";
+import ModalSuccess from "../ModalSuccess";
 
-const SimpleSignIn = ({ cedula = '' }) => {
+const SimpleSignIn = ({ cedula = "" }) => {
   const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (fieldName, value) => {
@@ -110,15 +111,29 @@ const SimpleSignIn = ({ cedula = '' }) => {
             {FaEnvelope}
           </MyInput>
           <Box mt="1rem" display="flex" gap="1rem" alignItems="center">
-            <Button colorScheme="teal">Cancelar</Button>
-            <Button
-              colorScheme="teal"
-              onClick={() => {
-                return cedula === "" ? createCliente() : updateCliente(cedula);
-              }}
-            >
-              Enviar
-            </Button>
+            <ModalSuccess
+              heading={
+                cedula === "" ? "Creación exitosa" : "Actualización exitosa"
+              }
+              text={
+                cedula === ""
+                  ? "Su cliente ha sido creado exitosamente."
+                  : "Su cliente ha sido actualizado exitosamente."
+              }
+              button={(openModal) => (
+                <Button
+                  colorScheme="teal"
+                  onClick={() => {
+                    openModal();
+                    return cedula === ""
+                      ? createCliente()
+                      : updateCliente(cedula);
+                  }}
+                >
+                  Enviar
+                </Button>
+              )}
+            />
           </Box>
         </Box>
       </Container>

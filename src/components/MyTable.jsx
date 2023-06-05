@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Container,
   Heading,
   Skeleton,
@@ -13,33 +12,15 @@ import {
   Th,
   Thead,
   Tr,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { capitalizeFirstLetter } from "./utils/capitalizeFirstLetter";
-import { FaPencilAlt, FaTrash } from "react-icons/fa";
-import ModalForm from "./Form/ModalForm";
+import ModalForm from "./Form/ModalFormBtn";
+import DeleteModal from "./Form/ModalDeleteBtn";
 
 export default function MyTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [clientes, setClientes] = useState(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const deleteUser = async (cedula) => {
-    const options = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const response = await fetch(
-      `http://localhost:5000/api/v1/clientes/${cedula}`,
-      options
-    );
-
-    console.log(response);
-  };
 
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/clientes")
@@ -99,22 +80,9 @@ export default function MyTable() {
                         alignItems="center"
                         justifyContent="center"
                       >
-                        <Button
-                          colorScheme="red"
-                          size="sm"
-                          onClick={() => deleteUser(cliente.cedula)}
-                        >
-                          {<FaTrash />}
-                        </Button>
-                        <Button colorScheme="blue" size="sm" onClick={onOpen}>
-                          {<FaPencilAlt />}
-                        </Button>
+                        <DeleteModal cedula={cliente.cedula}></DeleteModal>
+                        <ModalForm cedula={cliente.cedula}/>
                       </Stack>
-                      <ModalForm
-                        isOpen={isOpen}
-                        onClose={onClose}
-                        cedula={cliente.cedula}
-                      />
                     </Td>
                   </Tr>
                 );
